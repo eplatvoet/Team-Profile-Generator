@@ -87,13 +87,19 @@ function promptUser(){
         },
         {
             type: "input",
-            name: "school"
+            name: "school",
             message: "What school do they attend?"
         }
 
-    ])
+    ]);
 }
+//CALL THE RENDER FUNCTION
+    //WRITE FILE TO TEAM.HTML IN THE 'OUTPUT' FOLDER
 
+//CALL PROMPTUSER() 
+//THEN GENERATE RESPONSE ANSWERS
+//THEN CONSOLE LOG SUCCESS
+//THEN CATCH ERROR
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
