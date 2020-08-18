@@ -40,8 +40,12 @@ function promptUser(){
             type: "input",
             name: "officeNumber",
             message: "What is the manager's office number?"
-        },
-        //seperate function
+        }
+    ]);
+};
+//FUNCTION ASKING IF THEY WANT TO ADD MORE EMPLOYEES
+function addMoreEmployees(){
+    return inquirer.prompt([
         {
             type: "list",
             name: "addMoreEmployees",
@@ -51,11 +55,25 @@ function promptUser(){
                 "Intern",
                 "I don't want to add any more employees to this team"
             ] //based off this selection, switch case to other questions or pull manager repsonse. default = done & write to team.html
-        },
-        //ENGINEER QUESTIONS --> own function
+        }
+    ])
+    //if (answer.choices === "Engineer") {
+    //     engineeerQuestions()
+    // }
+    // else if (answer.choices === "Intern") {
+        // internQuestions()
+        // }
+    // else {
+        // createTeam()
+        // }
+};  
+        
+//ENGINEER QUESTIONS
+function engineeerQuestions(){
+    return inquirer.prompt([
         {
             type: "input",
-            name: "name", //engineerName
+            name: "name", 
             message: "What is the name of the Engineer?"
         },
         {
@@ -72,8 +90,14 @@ function promptUser(){
             type: "input",
             name: "github",
             message: "What is their GitHub username?"
-        },
-        //INTERN QUESTIONS---> own function
+        }
+    ]);
+    addMoreEmployees();
+};
+        
+//INTERN QUESTIONS
+function internQuestions(){
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -96,13 +120,39 @@ function promptUser(){
         }
 
     ]);
-}
+    addMoreEmployees();
+};
 
 //CALL PROMPTUSER() 
+promptUser();
+addMoreEmployees();
+//conditional statements & createTeam();
+createTeam();
+//
+    // .then(function(team){
+    //    // if !(fs.existsSync(OUTPUT_DIR)){
+    // //     mkdirSync(OUTPUT_DIR)
+    // //    };
+    //    return fsWriteFileSync(outputPath, render(team), "utf8")
+    // })
+    
+function createTeam() {
+    const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+    team.push(manager)
+};
 
-//manager function //const manager = new Manager(response.name, response.id, response.officeNumber, response.email);
-//push to team[]
-//createTeam function() (same thing for engineer and intern)
+function addEngineer() {
+    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+    team.push(engineer)
+
+};
+function addIntern() {
+    const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+    team.push(intern)
+
+};
+
+
 
 //call choices function //switch case --> instance of manager
 

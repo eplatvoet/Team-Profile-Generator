@@ -17,6 +17,5 @@ class Intern extends Employee {
     }
 }
 
-const intern = new Intern();
 
 module.exports = Intern;
