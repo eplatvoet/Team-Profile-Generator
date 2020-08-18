@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Employee = require("./lib/Employee.js");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -9,6 +10,8 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+
+const team = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -38,20 +41,21 @@ function promptUser(){
             name: "officeNumber",
             message: "What is the manager's office number?"
         },
+        //seperate function
         {
-            type: "checkbox",
+            type: "list",
             name: "addMoreEmployees",
             message: "What kind of team member would you like to add next?",
             choices: [
                 "Engineer",
                 "Intern",
                 "I don't want to add any more employees to this team"
-            ]
+            ] //based off this selection, switch case to other questions or pull manager repsonse. default = done & write to team.html
         },
-        //ENGINEER QUESTIONS
+        //ENGINEER QUESTIONS --> own function
         {
             type: "input",
-            name: "name",
+            name: "name", //engineerName
             message: "What is the name of the Engineer?"
         },
         {
@@ -69,7 +73,7 @@ function promptUser(){
             name: "github",
             message: "What is their GitHub username?"
         },
-        //INTERN QUESTIONS
+        //INTERN QUESTIONS---> own function
         {
             type: "input",
             name: "name",
@@ -93,30 +97,24 @@ function promptUser(){
 
     ]);
 }
-//CALL THE RENDER FUNCTION
-    //WRITE FILE TO TEAM.HTML IN THE 'OUTPUT' FOLDER
 
 //CALL PROMPTUSER() 
-//THEN GENERATE RESPONSE ANSWERS
-//THEN CONSOLE LOG SUCCESS
-//THEN CATCH ERROR
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
+//manager function //const manager = new Manager(response.name, response.id, response.officeNumber, response.email);
+//push to team[]
+//createTeam function() (same thing for engineer and intern)
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
+//call choices function //switch case --> instance of manager
 
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
+//engineer function //const engineer = new Engineer(); //createTeam function()
+//intern function //const intern = new Intern();//createTeam function()
+//push info to array (for each function) -check js activities
 
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+
+//createTeam function() (RENDER FUNCTION) 
+//WRITE FILE TO TEAM.HTML IN THE 'OUTPUT' FOLDER
+
+//conditional statement: if there isn't one (fs.existsSync(OUTPUT_DIR)), then make one using mkdirSync(OUTPUT_DIR)
+//fsWriteFileSync(outputPath, render(team), "utf8")
+
+
