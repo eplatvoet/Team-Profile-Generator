@@ -146,33 +146,30 @@ function createHTML() {
 
 //FUNCTIONS CREATED TO PUSH ANSWERS TO ARRAY
 function createTeam(answers) {
-    console.log("createTeam answers:", answers)
+    // console.log("createTeam answers:", answers)
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
     team.push(manager)
-    console.log("created Team", team)
+    // console.log("created Team", team)
 };
 
 function addEngineer(answers) {
-    console.log("addEngineer:", answers)
+    // console.log("addEngineer:", answers)
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
     team.push(engineer)
-    console.log("engineer added to team: ", team)
+    // console.log("engineer added to team: ", team)
 
 };
 function addIntern(answers) {
-    console.log("addIntern:", answers)
+    // console.log("addIntern:", answers)
     const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
     team.push(intern)
-    console.log("intern added to team:", team)
+    // console.log("intern added to team:", team)
 
 };
 
 //FUNCTIOIN TO INITIALIZE PROGRAM
 function init() {
     promptUser()
-        .then(function () {
-            console.log("Have a nice day!")
-        })
 };
 
 //START!

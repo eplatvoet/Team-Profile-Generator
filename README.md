@@ -20,9 +20,11 @@ so that I have quick access to emails and GitHub profiles
 - https://nodejs.org/api/fs.html  
 
 ## LINKS:
+https://github.com/eplatvoet/Team-Profile-Generator  
+https://eplatvoet.github.io/Team-Profile-Generator/  
 https://drive.google.com/file/d/128u1NMoRBa7pRx8WMcZTB6zVmLXoVxlF/view  
-
+https://drive.google.com/file/d/128wggiyeDeoxG_Q0xrGdWtuPyzqBK1TT/view  
 
 ## SCREENSHOTS:
-![test gif](assets/TeamProfileTest.gif)  
-![html created gift]()
+![test gif](assets/TeamGeneratorTest.gif)  
+![app gif](assets/TeamGeneratorApp.gif)
