@@ -11,18 +11,15 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+//GLOBAL VARIABLE SET UP TO PUSH ANSWERS INTO THIS ARRAY
 const team = [];
 
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
 //FUNCTION CONTAINING THE QUESTIONS USER WILL ANSWER IN ORDER TO CREATE THEIR TEAM
-function promptUser(){
+function promptUser() {
     return inquirer.prompt([
-        //MANAGER QUESTIONS
+        //MANAGER QUESTIONS 
         {
-            type:"input",
+            type: "input",
             name: "name",
             message: "What is the manager's name?"
         },
@@ -42,13 +39,14 @@ function promptUser(){
             message: "What is the manager's office number?"
         }
     ])
-    .then(function(answers) {
-        createTeam(answers)
-        addMoreEmployees()
-    }) 
+        .then(function (answers) {
+            createTeam(answers)
+            addMoreEmployees()
+        })
 };
+
 //FUNCTION ASKING IF THEY WANT TO ADD MORE EMPLOYEES
-function addMoreEmployees(){
+function addMoreEmployees() {
     inquirer.prompt([
         {
             type: "list",
@@ -58,29 +56,30 @@ function addMoreEmployees(){
                 "Engineer",
                 "Intern",
                 "I don't want to add any more employees to this team"
-            ] //based off this selection, switch case to other questions or pull manager repsonse. default = done & write to team.html
+            ]
         }
     ])
-    .then(function(answers) {
-        console.log(answers)
-        if (answers.addMore === "Engineer") {
-            engineeerQuestions()
-        }
-        else if (answers.addMore === "Intern") {
-            internQuestions()
+        .then(function (answers) {
+            console.log(answers)
+            //BASED OFF USER CHOICE, ONE OF THE FOLLOWING WILL BE EXECUTED:
+            if (answers.addMore === "Engineer") {
+                engineeerQuestions()
             }
-        else {
-            createHTML()
+            else if (answers.addMore === "Intern") {
+                internQuestions()
             }
-    })
-};  
-        
+            else {
+                createHTML()
+            }
+        })
+};
+
 //ENGINEER QUESTIONS
-function engineeerQuestions(){
+function engineeerQuestions() {
     inquirer.prompt([
         {
             type: "input",
-            name: "name", 
+            name: "name",
             message: "What is the name of the Engineer?"
         },
         {
@@ -99,14 +98,14 @@ function engineeerQuestions(){
             message: "What is their GitHub username?"
         }
     ])
-    .then(function(answers) {
-        addEngineer(answers)
-        addMoreEmployees()
-    }) 
+        .then(function (answers) {
+            addEngineer(answers)
+            addMoreEmployees()
+        })
 };
-        
+
 //INTERN QUESTIONS
-function internQuestions(){
+function internQuestions() {
     inquirer.prompt([
         {
             type: "input",
@@ -128,28 +127,24 @@ function internQuestions(){
             name: "school",
             message: "What school do they attend?"
         }
-
     ])
-    .then(function(answers) {
-        addIntern(answers)
-        addMoreEmployees()
-    }) 
+        .then(function (answers) {
+            addIntern(answers)
+            addMoreEmployees()
+        })
 };
 
-//CALL PROMPTUSER() 
+//FUNCTION TO CREATE THE HTML DOCUMENT
+function createHTML() {
 
-//conditional statements & createTeam();
-// createTeam();
-
-function createHTML(){
-    
-    if (!fs.existsSync(OUTPUT_DIR)){
+    if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
     };
     return fs.writeFileSync(outputPath, render(team), "utf8")
-    
+
 }
 
+//FUNCTIONS CREATED TO PUSH ANSWERS TO ARRAY
 function createTeam(answers) {
     console.log("createTeam answers:", answers)
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
@@ -162,22 +157,23 @@ function addEngineer(answers) {
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
     team.push(engineer)
     console.log("engineer added to team: ", team)
-    
+
 };
 function addIntern(answers) {
     console.log("addIntern:", answers)
     const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
     team.push(intern)
     console.log("intern added to team:", team)
-    
+
 };
 
-function init(){
-
+//FUNCTIOIN TO INITIALIZE PROGRAM
+function init() {
     promptUser()
-    .then(function () {
-        console.log("Have a nice day!")
-    })
+        .then(function () {
+            console.log("Have a nice day!")
+        })
 };
 
+//START!
 init();
