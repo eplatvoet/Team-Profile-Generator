@@ -1,30 +1,40 @@
-# Team-Profile-Generator
+# Team-Profile-Generator  
+# ![Git Hub license](https://img.shields.io/badge/License-Unlicensed-blue.svg)
 
-For this assignment, we were instructed to create a Team Profile Generator that a user would answer questions in node, & the answers would create an HTML document with the team information. There was some starter code given, and tests laid out. We had to make sure that we created classes and the app.js document functions that would properly generate the HTML document.
+## TABLE OF CONTENTS
+- [DESCRIPTION](#DESCRIPTION)  
+- [LICENSE](#LICENSE)  
+- [INSTALLATION](#INSTALLATION)  
+- [TECHNOLOGIES](#TECHNOLOGIES)  
+- [QUESTIONS](#QUESTIONS)  
+- [CONTRIBUTIONS](#CONTRIBUTIONS)
+- [LINKS](#LINKS)  
+- [SCREENSHOTS](#SCREENSHOTS) 
 
-## USER STORY:
+## DESCRIPTION
+Welcome to the Team Profile Generator. Using the command line, the user will answer a series of questions. The answers will then be pushed to an HTML template. This document stores the team's information (email & github) for quicker access.  
 
-```
-As a manager
-I want to generate a webpage that displays my team's basic info
-so that I have quick access to emails and GitHub profiles
-```
+## LICENSE
+Unlicensed
 
-## TECHNOLOGIES USED:
+## INSTALLATION
+N/A
+
+## TECHNOLOGIES 
 - JavaScript  
 - Node.js  
 - Jest.js  
 
-## SOURCES:
-- https://jestjs.io/  
-- https://nodejs.org/api/fs.html  
+## QUESTIONS
+My GitHub username is *eplatvoet* & my profile can be found [here](https://github.com/eplatvoet) 
 
-## LINKS:
-https://github.com/eplatvoet/Team-Profile-Generator  
-https://eplatvoet.github.io/Team-Profile-Generator/  
-https://drive.google.com/file/d/128u1NMoRBa7pRx8WMcZTB6zVmLXoVxlF/view  
-https://drive.google.com/file/d/128wggiyeDeoxG_Q0xrGdWtuPyzqBK1TT/view  
+## CONTRIBUTIONS
+Feel free to fork the repository if any upgrades/features can be implemented. I can be reached at erin.didomenico520@gmail.com if you have any other questions about this repository.
 
-## SCREENSHOTS:
+## LINKS
+[REPO](https://github.com/eplatvoet/Team-Profile-Generator)  
+[DEPLOYED](https://eplatvoet.github.io/Team-Profile-Generator/)  
+
+## SCREENSHOTS
 ![test gif](assets/TeamGeneratorTest.gif)  
 ![app gif](assets/TeamGeneratorApp.gif)
